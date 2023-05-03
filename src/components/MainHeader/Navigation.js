@@ -1,29 +1,59 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import styles from "./Navigation.module.css";
+import AuthContext from "../../store/auth-context";
 
-const Navigation = (props) => {
+const Navigation = () => {
+  const context = useContext(AuthContext);
   return (
     <nav className={styles.nav}>
       <ul>
-        {props.isLoggedIn && (
+        {context.isLoggedIn && (
           <li>
-            <a href="/">Пользователи</a>
+            <a href="/">Users</a>
           </li>
         )}
-        {props.isLoggedIn && (
+        {context.isLoggedIn && (
           <li>
-            <a href="/">Админ</a>
+            <a href="/">Admin</a>
           </li>
         )}
-        {props.isLoggedIn && (
+        {context.isLoggedIn && (
           <li>
-            <button onClick={props.onLogout}>Выйти</button>
+            <button onClick={context.onLogout}>Log Out</button>
           </li>
         )}
       </ul>
     </nav>
   );
+
+  /* return (
+    <AuthContext.Consumer>
+      {(context) => {
+        return (
+          <nav className={styles.nav}>
+            <ul>
+              {context.isLoggedIn && (
+                <li>
+                  <a href="/">Users</a>
+                </li>
+              )}
+              {context.isLoggedIn && (
+                <li>
+                  <a href="/">Admin</a>
+                </li>
+              )}
+              {context.isLoggedIn && (
+                <li>
+                  <button onClick={props.onLogout}>Log Out</button>
+                </li>
+              )}
+            </ul>
+          </nav>
+        );
+      }}      
+    </AuthContext.Consumer>
+  ); */
 };
 
 export default Navigation;

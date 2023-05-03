@@ -6,11 +6,8 @@ import styles from "./MainHeader.module.css";
 const MainHeader = (props) => {
   return (
     <header className={styles["main-header"]}>
-      <h1>React Advanced</h1>
-      <Navigation
-        isLoggedIn={props.isAuthenticated}
-        onLogout={props.onLogout}
-      />
+      <h1>Log in/ Log Out App</h1>
+      <Navigation/>
     </header>
   );
 };
